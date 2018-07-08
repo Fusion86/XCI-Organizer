@@ -46,6 +46,6 @@ namespace NSWDB.Models
     public class ReleasesRoot
     {
         [XmlElement(ElementName = "release")]
-        public List<Release> Release { get; set; }
+        public List<Release> Release { get; set; } = new List<Release>();
     }
 }

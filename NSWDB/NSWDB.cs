@@ -11,7 +11,7 @@ namespace NSWDB
     {
         public IReadOnlyList<object> Releases => _releases.Release.AsReadOnly();
 
-        private ReleasesRoot _releases { get; set; }
+        private ReleasesRoot _releases { get; set; } = new ReleasesRoot();
 
         /// <summary>
         /// 

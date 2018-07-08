@@ -38,7 +38,6 @@ namespace NSWDB.Test
             db.LoadRemote().Wait();
 
             Assert.IsTrue(db.Releases.Count > 0, "No releases!");
-
             Console.WriteLine($"Loaded {db.Releases.Count} releases");
         }
     }

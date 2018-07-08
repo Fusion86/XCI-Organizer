@@ -37,11 +37,25 @@ namespace XCI_Organizer.WPF
 
         }
 
-        #endregion
-
         private void menuItemAbout_Click(object sender, RoutedEventArgs e)
         {
             new AboutWindow().ShowDialog();
         }
+
+        private void cmdUpdateNSWDB_CanExecute(object sender, CanExecuteRoutedEventArgs e) => e.CanExecute = true;
+
+        private async void cmdUpdateNSWDB_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            await vm.UpdateNSWDB();
+        }
+
+        private void cmdBrowseNSWDB_CanExecute(object sender, CanExecuteRoutedEventArgs e) => e.CanExecute = true;
+
+        private void cmdBrowseNSWDB_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
+
+        #endregion
     }
 }

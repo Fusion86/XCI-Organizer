@@ -15,6 +15,8 @@
     <Window.CommandBindings>
         <CommandBinding x:Name="cmdSelectGamesFolder" Command="local:CustomCommands.SelectGamesFolder" CanExecute="cmdSelectGamesFolder_CanExecute" Executed="cmdSelectGamesFolder_Executed"/>
         <CommandBinding x:Name="cmdReloadGamesList" Command="local:CustomCommands.ReloadGamesList" CanExecute="cmdReloadGamesList_CanExecute" Executed="cmdReloadGamesList_Executed"/>
+        <CommandBinding x:Name="cmdUpdateNSWDB" Command="local:CustomCommands.UpdateNSWDB" CanExecute="cmdUpdateNSWDB_CanExecute" Executed="cmdUpdateNSWDB_Executed"/>
+        <CommandBinding x:Name="cmdBrowseNSWDB" Command="local:CustomCommands.BrowseNSWDB" CanExecute="cmdBrowseNSWDB_CanExecute" Executed="cmdBrowseNSWDB_Executed"/>
     </Window.CommandBindings>
 
     <DockPanel>
@@ -30,8 +32,8 @@
 
             <MenuItem Header="Tools">
                 <MenuItem Header="NSWDB">
-                    <MenuItem Header="Browse"/>
-                    <MenuItem Header="Update"/>
+                    <MenuItem Header="Browse" Command="local:CustomCommands.BrowseNSWDB"/>
+                    <MenuItem Header="Update" Command="local:CustomCommands.UpdateNSWDB"/>
                 </MenuItem>
                 <Separator/>
                 <MenuItem Header="Manage Keys"/>
@@ -42,7 +44,7 @@
 
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem>
-                <TextBlock Text="Text"/>
+                <TextBlock Text="{Binding NSWDBStatusText}"/>
             </StatusBarItem>
         </StatusBar>
 
