@@ -5,4 +5,8 @@
     <RootNamespace>XCI_Organizer</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\XTSSharp\XTSSharp.csproj" />
+  </ItemGroup>
+
 </Project>

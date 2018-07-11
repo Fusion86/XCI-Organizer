@@ -5,6 +5,7 @@ using System.Text;
 using XCI_Organizer.Classes;
 using XCI_Organizer.Extensions;
 using XCI_Organizer.Structs;
+using XTSSharp;
 
 namespace XCI_Organizer.Models
 {
@@ -17,6 +18,8 @@ namespace XCI_Organizer.Models
         public HFS0Header HFS0Header;
         public HFS0FileEntry[] HFS0FileEntries;
         public string[] HFS0StringTable;
+
+        public Keyset Keyset; // FIXME: Not sure how I want to handle the keys
 
         private XCI(string path)
         {
@@ -35,6 +38,7 @@ namespace XCI_Organizer.Models
             using (BinaryReader br = new BinaryReader(fs))
             {
                 XCI xci = new XCI(path);
+                xci.Keyset = keyset;
 
                 // Gamecard Header
                 byte[] bytes = br.ReadBytes(0x200); // sizeof GamecardHeader
@@ -83,9 +87,27 @@ namespace XCI_Organizer.Models
                     cStr.Clear(); // Clear for next loop
                 }
 
-                // TODO: HFS0 Raw File Data (maybe keep stream alive so that we can always access this?)
-
                 return xci;
+            }
+        }
+
+        public object GetNCAStream(string name)
+        {
+            for (int i = 0; i < HFS0StringTable.Length; i++)
+                if (name == HFS0StringTable[i])
+                    return GetNCAStream(i);
+
+            // If not found
+            return null;
+        }
+
+        public object GetNCAStream(int i)
+        {
+            Xts xts = XtsAes128.Create(Keyset.HeaderKey1, Keyset.HeaderKey2); // Maybe Keyset.HeaderKey is enough
+
+            using (FileStream fs = new FileStream(Path, FileMode.Open))
+            {
+                return null;
             }
         }
     }
