@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using XCI_Organizer.Classes;
 using XCI_Organizer.Extensions;
 using XCI_Organizer.Structs;
@@ -11,8 +13,10 @@ namespace XCI_Organizer.Models
         public readonly string Path;
 
         public GamecardHeader GamecardHeader;
+
         public HFS0Header HFS0Header;
         public HFS0FileEntry[] HFS0FileEntries;
+        public string[] HFS0StringTable;
 
         private XCI(string path)
         {
@@ -60,7 +64,25 @@ namespace XCI_Organizer.Models
                     xci.HFS0FileEntries[i] = bytes.ToStruct<HFS0FileEntry>();
                 }
 
-                // TODO: HFS0 String Table
+                // HFS0 String Table
+                xci.HFS0StringTable = new string[xci.HFS0Header.NumberOfFiles];
+                List<byte> cStr = new List<byte>();
+                byte b;
+
+                for (int i = 0; i < xci.HFS0Header.NumberOfFiles; i++)
+                {
+                    while (true)
+                    {
+                        b = br.ReadByte(); // This shouldn't be too bad since I **assume** that the FileStream uses buffering in one way or another
+
+                        if (b == 0) break; // Break on zero (because c-string zero means that we've reached the end of the string)
+                        else cStr.Add(b);
+                    }
+
+                    xci.HFS0StringTable[i] = Encoding.ASCII.GetString(cStr.ToArray());
+                    cStr.Clear(); // Clear for next loop
+                }
+
                 // TODO: HFS0 Raw File Data (maybe keep stream alive so that we can always access this?)
 
                 return xci;
