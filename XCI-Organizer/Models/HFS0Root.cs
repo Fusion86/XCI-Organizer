@@ -27,12 +27,13 @@ namespace XCI_Organizer.Models
             // The "SHA-256 File System" or "HFS0" starts at offset 0xF000 in the Gamecard. The first 0x200 bytes act as a global header and represent the root partition which points to the other partitions ("normal", "logo", "update" and "secure").
             // Where "logo" only exists in 4.0.0+ gamecards and if "logo" exists then "normal" is empty (not verified)
 
-            long offset = stream.Position + 0x200; // Offset where to load the other headers
             Logger.Info("stream.Position = " + stream.Position);
-            Logger.Info("offset = " + offset);
 
             // Root HFS0
             HFS0Root root = new HFS0Root(stream);
+
+            long offset = stream.Position; // Offset where to load the other headers, for gamecards this should be 0xF200
+            Logger.Info("offset = " + offset);
 
             // Since we just loaded the root HFS0 partition all the files inside it (FileEntries) are actually also HFS0 parititons
             root.Partitions = new HFS0Entry[root.Header.NumberOfFiles];

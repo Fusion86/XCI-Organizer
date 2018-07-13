@@ -42,7 +42,7 @@ namespace XCI_Organizer.Models
                     FileEntries[i] = bytes.ToStruct<HFS0FileEntry>();
                 }
 
-                long stringTablePosition = stream.Position; // Remeber current position so that we can set the stream.Position to the end of the 00-padded String Table
+                long stringTableOffset = stream.Position; // Remeber current position so that we can set the stream.Position to the end of the 00-padded String Table
 
                 // HFS0 String Table
                 StringTable = new string[Header.NumberOfFiles];
@@ -64,8 +64,7 @@ namespace XCI_Organizer.Models
                 }
 
                 // Set stream.Position to the end of the HFS0 String Table (incl. 00-padding)
-                // This is not actually required for the program to work, but I feel like we should be nice and give the calling function a consistent/logical stream.Position back
-                stream.Position = stringTablePosition + Header.StringTableSize;
+                stream.Position = stringTableOffset + Header.StringTableSize;
             }
         }
 
