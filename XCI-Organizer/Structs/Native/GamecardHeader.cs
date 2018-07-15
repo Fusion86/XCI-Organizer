@@ -25,16 +25,9 @@ namespace XCI_Organizer.Structs.Native
         [Endian(Endianness.LittleEndian)]
         public UInt32 BackupAreaStartAddress; // Backup Area Start Address (always 0xFFFFFFFF)
 
-        [Endian(Endianness.LittleEndian)]
         public byte TitleKEKIndex; // Title KEK Index (high nibble) and KEK Index (low nibble)
-
-        [Endian(Endianness.LittleEndian)]
         public CartridgeSize GamecardSize; // (0xFA = 1GB, 0xF8 = 2GB, 0xF0 = 4GB, 0xE0 = 8GB, 0xE1 = 16GB, 0xE2 = 32GB)
-
-        [Endian(Endianness.LittleEndian)]
         public byte GamecardHeaderVersion;
-
-        [Endian(Endianness.LittleEndian)]
         public byte GamecardFlags; // bit0 = AutoBoot, bit1 = HistoryErase
 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8, ArraySubType = UnmanagedType.U1)]

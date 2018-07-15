@@ -12,13 +12,13 @@ namespace XCI_Organizer.Models
 
         }
 
-        public IEnumerable<HFS0File> Files
+        public IEnumerable<NCA> Files
         {
             get
             {
                 for (int i = 0; i < Header.NumberOfFiles; i++)
                 {
-                    yield return new HFS0File(
+                    yield return new NCA(
                         _xci, StringTable[i], // Filename (usually xxx.nca or xxx.cnmt.nca)
                         Offset + Size + (long)FileEntries[i].Offset, // Offset = partitionHeaderOffset + partitionHeaderSize + fileOffset (where fileOffset is relative to the start of partitionOffset)
                         (long)FileEntries[i].Size // Filesize
