@@ -20,7 +20,7 @@ namespace XCI_Organizer.Models
                 {
                     yield return new NCA(
                         _xci, StringTable[i], // Filename (usually xxx.nca or xxx.cnmt.nca)
-                        Offset + Size + (long)FileEntries[i].Offset, // Offset = partitionHeaderOffset + partitionHeaderSize + fileOffset (where fileOffset is relative to the start of partitionOffset)
+                        Offset + Size + (long)FileEntries[i].Offset, // Offset = partitionHeaderOffset + partitionHeaderSize + fileOffset
                         (long)FileEntries[i].Size // Filesize
                     );
                 }
