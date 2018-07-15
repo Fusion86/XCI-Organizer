@@ -1,8 +1,10 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.IO;
 using System.Runtime.InteropServices;
 using XCI_Organizer.Classes;
 using XCI_Organizer.Models;
-using XCI_Organizer.Structs;
+using XCI_Organizer.Structs.Native;
 
 namespace XCI_Organizer.Test
 {
@@ -22,6 +24,29 @@ namespace XCI_Organizer.Test
             XCI xci = XCI.Load(@"L:\ROM\Nintendo Switch\Fire Emblem Warriors.xci", keyset);
 
             Assert.IsTrue(xci != null);
+        }
+
+        [TestMethod]
+        public void DumpNormal()
+        {
+            XCI xci = XCI.Load(@"L:\ROM\Nintendo Switch\Fire Emblem Warriors.xci", null);
+
+            Directory.CreateDirectory(Path.Combine("dump", "normal"));
+            Directory.CreateDirectory(Path.Combine("dump", "update"));
+
+            foreach (var file in xci.FileSystem.GetNormalPartition().Files)
+            {
+                string path = Path.Combine("dump", "normal", file.Name);
+                file.Dump(path);
+                Console.WriteLine($"Dumped to '{path}'");
+            }
+
+            foreach (var file in xci.FileSystem.GetUpdatePartition().Files)
+            {
+                string path = Path.Combine("dump", "update", file.Name);
+                file.Dump(path);
+                Console.WriteLine($"Dumped to '{path}'");
+            }
         }
     }
 }

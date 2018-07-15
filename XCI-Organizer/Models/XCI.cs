@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using XCI_Organizer.Classes;
 using XCI_Organizer.Extensions;
-using XCI_Organizer.Structs;
-using XTSSharp;
+using XCI_Organizer.Structs.Native;
 
 namespace XCI_Organizer.Models
 {
@@ -50,7 +47,7 @@ namespace XCI_Organizer.Models
 
                 // HFS0, see comments in HFS0Root and HFS0Entry
                 fs.Position = 0xF000; // start of HFS0Header
-                xci.FileSystem = HFS0Root.Load(fs);
+                xci.FileSystem = HFS0Root.Load(xci, fs);
 
                 return xci;
             }

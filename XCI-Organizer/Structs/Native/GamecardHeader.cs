@@ -6,7 +6,7 @@ using System.Text;
 using XCI_Organizer.Enums;
 using XCI_Organizer.Helper;
 
-namespace XCI_Organizer.Structs
+namespace XCI_Organizer.Structs.Native
 {
     [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public struct GamecardHeader

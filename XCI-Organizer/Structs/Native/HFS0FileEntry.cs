@@ -4,7 +4,7 @@ using System;
 using System.Runtime.InteropServices;
 using XCI_Organizer.Helper;
 
-namespace XCI_Organizer.Structs
+namespace XCI_Organizer.Structs.Native
 {
     [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public struct HFS0FileEntry
