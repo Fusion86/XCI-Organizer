@@ -1,12 +1,8 @@
 ﻿// http://switchbrew.org/index.php?title=NCA_Format
 
-using System;
 using System.Diagnostics;
 using System.IO;
-using XCI_Organizer.Extensions;
 using XCI_Organizer.Helper;
-using XCI_Organizer.Structs.Native;
-using XTSSharp;
 
 namespace XCI_Organizer.Models
 {

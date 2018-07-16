@@ -11,6 +11,8 @@ namespace XCI_Organizer.Test
     [TestClass]
     public class XCITests
     {
+        private const string XCI_PATH = @"L:\ROM\Nintendo Switch\Fire Emblem Warriors.xci";
+
         [TestMethod]
         public void GamecardHeaderSize()
         {
@@ -21,7 +23,7 @@ namespace XCI_Organizer.Test
         public void LoadXCI()
         {
             Keyset keyset = Keyset.Load("keys.txt");
-            XCI xci = XCI.Load(@"L:\ROM\Nintendo Switch\Fire Emblem Warriors.xci", keyset);
+            XCI xci = XCI.Load(XCI_PATH, keyset);
 
             Assert.IsTrue(xci != null);
         }
@@ -29,7 +31,7 @@ namespace XCI_Organizer.Test
         [TestMethod]
         public void DumpNormal()
         {
-            XCI xci = XCI.Load(@"L:\ROM\Nintendo Switch\Fire Emblem Warriors.xci", null);
+            XCI xci = XCI.Load(XCI_PATH, null);
 
             Directory.CreateDirectory(Path.Combine("dump", "normal"));
             Directory.CreateDirectory(Path.Combine("dump", "update"));
