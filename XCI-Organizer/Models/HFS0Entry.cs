@@ -19,7 +19,8 @@ namespace XCI_Organizer.Models
                 for (int i = 0; i < Header.NumberOfFiles; i++)
                 {
                     yield return new NCA(
-                        _xci, StringTable[i], // Filename (usually xxx.nca or xxx.cnmt.nca)
+                        XCI,
+                        StringTable[i], // Filename (usually xxx.nca or xxx.cnmt.nca)
                         Offset + Size + (long)FileEntries[i].Offset, // Offset = partitionHeaderOffset + partitionHeaderSize + fileOffset
                         (long)FileEntries[i].Size // Filesize
                     );

@@ -10,8 +10,8 @@ namespace XCI_Organizer.Models
     {
         public readonly string Path;
 
-        public GamecardHeader GamecardHeader;
-        public HFS0Root FileSystem;
+        public GamecardHeader GamecardHeader { get; private set; }
+        public HFS0Root FileSystem { get; private set; }
 
         public Keyset Keyset; // FIXME: Not sure how I want to handle the keys
 

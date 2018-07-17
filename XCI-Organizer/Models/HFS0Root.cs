@@ -12,7 +12,7 @@ namespace XCI_Organizer.Models
     {
         private static readonly ILog Logger = LogProvider.For<HFS0Root>();
 
-        public HFS0Entry[] Partitions;
+        public HFS0Entry[] Partitions { get; private set; }
 
         private HFS0Root(XCI xci, Stream stream, long offset) : base(xci, "root", stream, offset, 0)
         {

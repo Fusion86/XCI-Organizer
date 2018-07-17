@@ -5,20 +5,21 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using XCI_Organizer.Extensions;
+using XCI_Organizer.Interfaces;
 using XCI_Organizer.Logging;
 using XCI_Organizer.Structs.Native;
 
 namespace XCI_Organizer.Models
 {
-    public abstract class HFS0EntryBase
+    public abstract class HFS0EntryBase : IHFS0Object
     {
         private static readonly ILog Logger = LogProvider.For<HFS0EntryBase>();
 
-        public readonly string Name;
-        public readonly long Offset;
-        public readonly long Size;
+        public XCI XCI { get; }
 
-        protected XCI _xci;
+        public string Name { get; }
+        public long Offset { get; }
+        public long Size { get; }
 
         protected HFS0Header Header;
         protected HFS0FileEntry[] FileEntries;
@@ -26,7 +27,7 @@ namespace XCI_Organizer.Models
 
         public HFS0EntryBase(XCI xci, string name, Stream stream, long offset, long size)
         {
-            _xci = xci;
+            XCI = xci;
             Name = name;
             Offset = offset;
 
