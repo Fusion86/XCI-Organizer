@@ -1,0 +1,77 @@
+﻿<Window x:Class="NXBM.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NXBM.WPF"
+        mc:Ignorable="d"
+        DataContext="{Binding MainViewModel, Source={StaticResource Locator}}"
+        Title="NX Backup Manager"
+        MinHeight="450" MinWidth="800" Height="600" Width="1200"
+        ResizeMode="CanResizeWithGrip">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="Options"/>
+                <MenuItem Header="Exit"/>
+            </MenuItem>
+            <MenuItem Header="NSWDB"/>
+            <MenuItem Header="Help">
+                <MenuItem Header="About"/>
+            </MenuItem>
+        </Menu>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="310"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Frame Grid.Column="0" Margin="5, 5, 5, 5" Background="Gainsboro"/>
+
+            <TabControl Grid.Column="2" Margin="0, 5, 5, 5" Padding="0">
+                <TabItem Header="Games">
+                    <Grid Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="400"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Menu Grid.Column="0" HorizontalAlignment="Left" Background="White">
+                                <MenuItem Header="Source"/>
+                                <MenuItem Header="Select"/>
+                                <MenuItem Header="Grouping">
+                                    <MenuItem Header="None" IsChecked="True"/>
+                                    <MenuItem Header="Cart Size"/>
+                                    <MenuItem Header="Developer"/>
+                                    <MenuItem Header="Region"/>
+                                </MenuItem>
+                                <MenuItem Header="Transfer"/>
+                                <MenuItem Header="Tools">
+                                    <MenuItem Header="Rename"/>
+                                </MenuItem>
+                            </Menu>
+
+                            <TextBox Grid.Column="1"/>
+                        </Grid>
+
+                        <ListView Grid.Row="2">
+
+                        </ListView>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="NSWDB">
+
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </DockPanel>
+</Window>
