@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NXBM.WPF.Controls
+namespace NXBM.WPF.Controls.SidePanel
 {
     /// <summary>
     /// Interaction logic for GameInfo.xaml

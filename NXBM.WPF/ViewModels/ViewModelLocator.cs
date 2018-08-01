@@ -26,8 +26,10 @@ namespace NXBM.WPF.ViewModels
             ////}
 
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<GameListViewModel>();
         }
 
         public MainViewModel MainViewModel => SimpleIoc.Default.GetInstance<MainViewModel>(Guid.NewGuid().ToString());
+        public GameListViewModel GameListViewModel => SimpleIoc.Default.GetInstance<GameListViewModel>(Guid.NewGuid().ToString());
     }
 }

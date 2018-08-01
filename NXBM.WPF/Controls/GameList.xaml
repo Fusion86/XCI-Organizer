@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="NXBM.WPF.Controls.GameList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NXBM.WPF.Controls"
+             mc:Ignorable="d"
+             DataContext="{Binding GameListViewModel, Source={StaticResource Locator}}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Menu Grid.Column="0" HorizontalAlignment="Left" Background="White">
+                <MenuItem Header="Source">
+                    <MenuItem Header="Add New Source" Command="{Binding AddSourceCommand}"/>
+                    <!--<Separator/>-->
+                    <!--<ItemsControl ItemsSource="{Binding Sources}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <MenuItem Header="{Binding}"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemContainerStyle>
+                            <Style TargetType="MenuItem">
+                                <Setter Property="Command" Value="{Binding RemoveSourceCommand}"/>
+                                <Setter Property="CommandParameter" Value="{Binding}"/>
+                            </Style>
+                        </ItemsControl.ItemContainerStyle>
+                    </ItemsControl>-->
+                </MenuItem>
+                <MenuItem Header="Select"/>
+                <MenuItem Header="Grouping">
+                    <MenuItem Header="None" IsChecked="True"/>
+                    <MenuItem Header="Cart Size"/>
+                    <MenuItem Header="Developer"/>
+                    <MenuItem Header="Region"/>
+                </MenuItem>
+                <MenuItem Header="Transfer"/>
+                <MenuItem Header="Tools">
+                    <MenuItem Header="Rename"/>
+                </MenuItem>
+            </Menu>
+
+            <TextBox Grid.Column="1"/>
+        </Grid>
+
+        <ListView Grid.Row="2" ItemsSource="{Binding Games}">
+
+        </ListView>
+    </Grid>
+</UserControl>

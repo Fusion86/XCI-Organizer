@@ -74,7 +74,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Controls\GameInfo.xaml">
+    <Page Include="Controls\SidePanel\GameInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\GameList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -86,10 +90,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controls\GameInfo.xaml.cs">
+    <Compile Include="Controls\SidePanel\GameInfo.xaml.cs">
       <DependentUpon>GameInfo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\GameList.xaml.cs">
+      <DependentUpon>GameList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\Game.cs" />
+    <Compile Include="ViewModels\GameListViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
